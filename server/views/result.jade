@@ -1,0 +1,81 @@
+extends layout
+
+block content
+    .navbar-wrapper
+        .container
+            h1 Ranker
+                small.pull-right Comparison based ranking framework
+    .container
+        #container(style="min-width: 310px; max-width: 980px; height: 600px; margin: 0 auto")
+    .tag 
+        - each tName in tournamentIds
+            a(href='/result?tournamentId=#{tName}') ##{tName}
+        a(href='/?tournamentId=#{tournamentId}') Tournament
+    footer.bs-docs-footer Built using Twitter Bootstrap, Node.js, Express, and MongoDB.
+
+    script(type='text/javascript')
+        $(function () {
+            $('#container').highcharts({
+                chart: {
+                    type: 'bar'
+                },
+                title: {
+                    text: 'Ranking'
+                },
+                subtitle: {
+                    text: 'Source: Crowd sourced data brought to you by "The Hobbits"'
+                },
+                xAxis: {
+                    categories: !{playerNames},
+                    title: {
+                        text: null
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'No of games',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ''
+                },
+                exporting: { enabled: false },
+                plotOptions: {
+                    bar: {
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'top',
+                    x: -40,
+                    y: 100,
+                    floating: true,
+                    borderWidth: 1,
+                    backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+                    shadow: true
+                },
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Win',
+                    data: !{win}
+                }, {
+                    name: 'Loss',
+                    data: !{loss}
+                }, {
+                    name: 'Total games',
+                    data: !{noOfGames}
+                }]
+            });
+        });
+

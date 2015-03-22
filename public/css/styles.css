@@ -1,0 +1,138 @@
+body {
+}
+
+@media (min-width: 960px) {
+    .container {
+        width: 935px;
+    }
+}
+
+@media (max-width: 959px) {
+    .container {
+        width: 450px;
+    }
+}
+
+h1 {
+    font-size: 4em;
+    color: #000;
+    line-height: 0.879em;
+    position: relative;
+    font-family: "Libre Baskerville","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: normal;
+}
+
+.navbar-wrapper{
+    margin-bottom: 20px;
+}
+
+h1 small {
+    font-size: 40%;
+    position: absolute;
+    right: 0;
+    bottom: 3px;
+    color: #000;
+}
+
+.block {
+    border: 1px solid #0bacff;
+    padding: 50px 20px 20px;
+    border-collapse: collapse;
+    position: relative;
+    min-height: 400px;
+    min-width: 260px;
+} 
+
+.row {
+    margin: 0;
+}
+
+.checkmark {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+}
+
+.checkmark,
+.thumbnails li .checkmark {
+    background-image: url(../img/select_unchecked.png);
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+}
+
+.checkmark:hover,
+.thumbnails li:hover .checkmark {
+    background-image: url(../img/select_checked.png);
+    background-repeat: no-repeat;
+}
+
+.thumbnails {
+    margin-left: -30px;
+}
+.thumbnails > li {
+    margin-left: 30px;
+}
+
+.thumbnails {
+    margin: 0 auto;
+    list-style: none;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    align-content: flex-start;
+}
+
+.thumbnails li {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-left: 0px !important;
+    margin-right: 30px !important;
+}
+
+.thumbnail {
+    background-color: #fff;
+    border: none;
+    margin: 0;
+    width: 400px;
+    min-height: 350px;
+    display: block;
+    padding: 50px 20px 20px;
+    line-height: 20px;
+}
+
+.thumbnail p {
+    padding-top: 20px;
+}
+
+li {
+    line-height: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+}
+
+.bs-docs-footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 20px;
+    text-align: center;
+    border-top: 1px solid #e5e5e5;
+    color: #000;
+}
+
+.tag {
+    text-align: center;
+    font-style: italic;
+    color: #999;
+}
+
+.tag a {
+    display: inline-block;
+    padding-right: 10px;
+}
