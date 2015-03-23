@@ -1,16 +1,13 @@
 extends layout
 
 block content
-    .navbar-wrapper
-        .container
-            h1 Ranker
-                small.pull-right Comparison based ranking framework
     .container
         #container(style="min-width: 310px; max-width: 980px; height: 600px; margin: 0 auto")
     .tag 
         - each tName in tournamentIds
             a(href='/result?tournamentId=#{tName}') ##{tName}
-        a(href='/?tournamentId=#{tournamentId}') Tournament
+        .result
+            a(href='/?tournamentId=#{tournamentId}') Tournament
     footer.bs-docs-footer Built using Twitter Bootstrap, Node.js, Express, and MongoDB.
 
     script(type='text/javascript')
@@ -34,11 +31,11 @@ block content
                 yAxis: {
                     min: 0,
                     title: {
-                        text: 'No of games',
-                        align: 'high'
+                        text: null
                     },
                     labels: {
-                        overflow: 'justify'
+                        overflow: 'justify',
+                        enabled: false
                     }
                 },
                 tooltip: {
@@ -48,11 +45,12 @@ block content
                 plotOptions: {
                     bar: {
                         dataLabels: {
-                            enabled: true
+                            enabled: false
                         }
                     }
                 },
                 legend: {
+                    enabled: false,
                     layout: 'vertical',
                     align: 'right',
                     verticalAlign: 'top',
@@ -67,14 +65,8 @@ block content
                     enabled: false
                 },
                 series: [{
-                    name: 'Win',
-                    data: !{win}
-                }, {
-                    name: 'Loss',
-                    data: !{loss}
-                }, {
-                    name: 'Total games',
-                    data: !{noOfGames}
+                    name: 'Score',
+                    data: !{score}
                 }]
             });
         });

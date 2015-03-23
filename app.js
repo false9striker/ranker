@@ -31,6 +31,11 @@ app.configure(function() {
         dumpExceptions: true,
         showStack: true
     }));
+    app.use(function(req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+    });
     app.set('views', path.join(application_root, "server/views"));
     app.set('view engine', 'jade');
     app.use(express.logger({

@@ -109,6 +109,7 @@ exports.update = function(req, res) {
     		tournamentId = req.query.tournamentId;
 
 // console.log('tournamentId - update: ', req);
+console.log(player1, player2, result);
 
 		collection.insert({ 
 		 	"type": "games", 
@@ -118,25 +119,6 @@ exports.update = function(req, res) {
 		 	"result": parseInt(result),
 		 	"userId": "anonymous"
 		}, function(err, result) {
-
-// console.log('Result - update: ', result);
-
-// 			collection.findAndModify({
-// 			    "query": { type: "players", "playerId": parseInt(player1) },
-// 			    "update": { $inc: { noOfGames: 1 } }
-// 			}, function(error, data) {
-// console.log('Insert dataPlayer1:', error);
-// 			});
-
-// console.log('About to update Player2 noOfGames ');
-
-// 			collection.findAndModify({
-// 			    "query": { type: "players", "playerId": parseInt(player2) },
-// 			    "update": { $inc: { noOfGames: 1 } }
-// 			}, function(error, data) {
-// console.log('Insert dataPlayer2: ', error);
-// 			});
-
 			res.redirect('/?tournamentId='+tournamentId);
 		});
     });
@@ -161,11 +143,15 @@ exports.comparisonResult = function(req, res) {
 				index = 0,
 				win = [],
 				loss = [],
-				noOfGames = [];
+				noOfGames = [],
+				score = [],
+				rank = [];
 
 			for (index = 0; index<players.length; index++) {
 				playerNames.push(players[index].name);
 				win.push(players[index].noOfWins);
+				rank.push(players[index].rank);
+				score.push(players[index].score);
 				noOfGames.push(players[index].noOfGames);
 				loss.push(players[index].noOfGames - players[index].noOfWins);
 			}
@@ -177,7 +163,9 @@ exports.comparisonResult = function(req, res) {
 					noOfGames: JSON.stringify(noOfGames),
 					loss: JSON.stringify(loss),
 					tournamentIds: tournamentIds,
-					tournamentId: tournamentId 
+					tournamentId: tournamentId,
+					score: JSON.stringify(score),
+					rank: JSON.stringify(rank)
 				});
 			});
 		});
