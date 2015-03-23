@@ -1,2 +1,2 @@
 # ranker
-ranker is a comparison based ranking solution using node.js
+ranker is a comparison based ranking framework using node.js
